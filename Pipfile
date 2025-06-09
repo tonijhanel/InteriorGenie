@@ -12,7 +12,7 @@ protobuf = "*"
 markdown = "*"
 gcloud = "*"
 google-genai = "*"
-google-cloud-aiplatform = "*"
+matplotlib = "*"
 
 [dev-packages]
 

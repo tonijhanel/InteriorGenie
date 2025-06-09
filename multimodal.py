@@ -16,29 +16,33 @@ vertexai.init(project=project_id, location=location)
 model = GenerativeModel(MODEL_NAME)
 
 try:
-    with open("C:\InteriorGenie\colorpalette.png", "rb") as image_file:
+    with open("C:\InteriorGenie\generated_content_20250608_234846\Mid_Century_Modern_Study__Brow_view_2_234914.jpeg", "rb") as image_file:
         image_bytes = image_file.read()
     encoded_image = base64.b64encode(image_bytes).decode("utf-8")
-    mime_type = "image/png" # Adjust based on your image type (e.g., "image/png")
+    mime_type = "image/jpeg" # Adjust based on your image type (e.g., "image/png")
     print(mime_type)
 except FileNotFoundError:
-    print("Error: image.png not found. Please provide a valid image path.")
+    print("Error: image.jpg not found. Please provide a valid image path.")
     exit()
 
 # --- Define your text prompt ---
 #text_prompt = "Generate a interior design color palette image based on the provided image, provide hex colors and specify if they are primary or secondary colors in the image"
 text_prompt = (
-"""
-     Generate an interior design color palette image based on the following json and provided image
-     [
-          {"name": "Medium Brown", "hex": "#A0785A", "prevalence": "primary"},
-          {"name": "Warm Beige", "hex": "#E6D9C3", "prevalence": "secondary"},
-          {"name": "Dark Brown", "hex": "#4A3A2E", "prevalence": "secondary"},
-          {"name": "Light Brown", "hex": "#C9B191", "prevalence": "secondary"},
-          {"name": "Dark Gray", "hex": "#3C3B3A", "prevalence": "secondary"},
-          {"name": "Tan", "hex": "#D6C2A8", "prevalence": "secondary"}
-    ]
-     """
+
+     ""     
+     "Analyze the provided interior design image and evaluate the dominant colors "
+    "Provide a list of 5-7 key colors in JSON format. "
+    "For each color, include: "
+    "1. 'name' (common color name, e.g., 'Warm Brown') "
+    "2. 'hex' (hexadecimal color code, e.g., '#RRGGBB') "
+    "3. 'type' ('primary' or 'secondary' based on prominence). "
+    "The JSON should be an array of objects. Do NOT include any additional text or markdown outside the JSON block. "
+    "Example JSON format: "
+    "```json\n"
+    "[\n"
+    "  {\"name\": \"Warm Brown\", \"hex\": \"#876C55\", \"type\": \"primary\"},\n"
+    "  {\"name\": \"Light Beige\", \"hex\": \"#E3DACC\", \"type\": \"secondary\"}\n"
+    "]\n"
 )
 # --- Construct the multimodal content ---
 # The 'contents' parameter expects a list of 'Part' objects.
