@@ -294,9 +294,9 @@ async def generate_section_image(section_content: str, section_title: str, room_
         response = await asyncio.to_thread(
             img_model.generate_images,
             prompt=image_prompt,
-            number_of_images=4,
+            number_of_images=3,
             language="en",
-            aspect_ratio="1:1",
+            aspect_ratio="4:3",
             safety_filter_level="block_some",
             person_generation="allow_adult"
         )
