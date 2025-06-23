@@ -13,6 +13,10 @@ markdown = "*"
 gcloud = "*"
 google-genai = "*"
 matplotlib = "*"
+"colorgram.py" = "*"
+colormap = "*"
+colorthief = "*"
+webcolors = "*"
 
 [dev-packages]
 
